@@ -1,0 +1,6 @@
+3    2    1
+7897987    7    6    5    4
+0 so bi sai format (khong phai int32). 4 so bi vuot gioi han kieu Int32.
+6 so bi sai format (khong phai int32). 0 so bi vuot gioi han kieu Int32.
+
+6 so bi sai format (khong phai int32). 4 so bi vuot gioi han kieu Int32.
