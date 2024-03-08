@@ -28,20 +28,20 @@ public class ExerciseString
         Console.WriteLine("1.6: Dem so ky tu khong phai space");
         Console.WriteLine($"Co [{countNonSpaces(Input.GetString(validator))}] ki tu khac space");
 
-        Console.WriteLine("1.7: So sanh 2 chuoi. Neu giong nhau thi di tiep 1.8.");
+        Console.WriteLine("1.7: So sanh 2 chuoi.");
         while (true)
         {
             var input1 = Input.GetString(validator);
             var input2 = Input.GetString(validator);
             Console.WriteLine($"Chuoi [{input1}] {(input1 == input2 ? "giong" : "khac")} chuoi [{input2}]");
-                
-            if (input1 == input2)
+
+            if (!ExerciseTemplate.testMore())
             {
                 break;
             }
         }
 
-        Console.WriteLine("1.8: So sanh hai chuoi, khong phan biet hoa thuong. Giong nhau thi di tiep qua 1.9.");
+        Console.WriteLine("1.8: So sanh hai chuoi, khong phan biet hoa thuong.");
         while (true)
         {
             var input1 = Input.GetString(validator);
@@ -49,14 +49,14 @@ public class ExerciseString
             var equal = input1.ToLower() == input2.ToLower();
             Console.WriteLine($"Chuoi [{input1}] {(equal ? "giong" : "khac")} chuoi [{input2}]");
 
-            if (equal)
+            if (!ExerciseTemplate.testMore())
             {
                 break;
             }
         }
 
         Console.WriteLine("1.9: Thay the 'ABC' thanh 'DEF'. Co phan biet hoa, thuong.");
-        Console.WriteLine($"Ket qua: {Input.GetString(validator).Replace("ABC", "DEF")}]");
+        Console.WriteLine($"Ket qua: {Input.GetString(validator).Replace("ABC", "DEF")}");
 
 
         Console.WriteLine("1.10: Hien thi chuoi: Kinh chao ong [input]. Chuc ngon mieng.");
@@ -68,20 +68,20 @@ public class ExerciseString
         Console.WriteLine($"Ket qua: '{reverse(Input.GetString(validator))}'");
 
 
-        Console.WriteLine("1.12: Bo ky tu trang o DAU chuoi, lay count ky tu DAU cua chuoi");
-        var count = Input.GetInt32(intValidator);
+        Console.WriteLine("1.12: Bo ky tu trang o DAU chuoi, lay X ky tu DAU cua chuoi");
+        var x = Input.GetInt32(intValidator, "Nhap so nguyen X:");
         var str = Input.GetString(validator);
-        Console.WriteLine($"Ket qua: '{firstCount(str.TrimStart(), count)}'");
-
-        Console.WriteLine("1.13: Bo ky tu trang o DAU VA CUOI chuoi, lay count ky tu DAU cua chuoi");
-        count = Input.GetInt32(intValidator);
+        Console.WriteLine($"Ket qua: '{firstCount(str.TrimStart(), x)}'");
+        
+        Console.WriteLine("1.13: Bo ky tu trang o DAU VA CUOI chuoi, lay X ky tu DAU cua chuoi");
+        x = Input.GetInt32(intValidator, "Nhap so nguyen X:");
         str = Input.GetString(validator);
-        Console.WriteLine($"Ket qua: '{firstCount(str.Trim(), count)}'");
+        Console.WriteLine($"Ket qua: '{firstCount(str.Trim(), x)}'");
 
-        Console.WriteLine("1.14: Bo ky tu trang o DAU VA CUOI chuoi, lay count ky tu CUOI cua chuoi");
-        count = Input.GetInt32(intValidator);
+        Console.WriteLine("1.14: Bo ky tu trang o DAU VA CUOI chuoi, lay X ky tu CUOI cua chuoi");
+        x = Input.GetInt32(intValidator, "Nhap so nguyen X:");
         str = Input.GetString(validator);
-        Console.WriteLine($"Ket qua: '{lastCount(str.Trim(), count)}'");
+        Console.WriteLine($"Ket qua: '{lastCount(str.Trim(), x)}'");
     }
 
     private static bool intValidator(string? s)

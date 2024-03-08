@@ -17,7 +17,7 @@
             }
             writer.Flush();
         }
-        catch (Exception e)
+        catch
         {
             throw;
         }
@@ -63,7 +63,8 @@
                     {
                         goodNumbers.Add(int.Parse(i));
                     }
-                    catch (FormatException e) {
+                    catch (FormatException)
+                    {
                         failFormatCount += 1;
                     }
                     catch (OverflowException) {
@@ -107,9 +108,9 @@
             }
             catch (FileNotFoundException e)
             {
-                Console.WriteLine($"Khong tim thay file co duong dan '{inputFilePath}'");
+                Console.WriteLine($"Khong tim thay file co duong dan '{e.FileName}'");
             }
-            catch (PathTooLongException e)
+            catch (PathTooLongException)
             {
                 Console.WriteLine("Duong dan qua dai. Vui long thu lai.");
             }
@@ -136,7 +137,7 @@
             {
                 Console.WriteLine($"Khong tim thay thu muc cua duong dan '{outputFilePath}'. Loi chi tiet: {e.Message}.");
             }
-            catch (PathTooLongException e)
+            catch (PathTooLongException)
             {
                 Console.WriteLine("Duong dan qua dai. Vui long thu lai.");
             }

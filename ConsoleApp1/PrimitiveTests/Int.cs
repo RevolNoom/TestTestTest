@@ -17,7 +17,7 @@ public class ExerciseInt
 
         Console.WriteLine("1.2: |x|");
         x = Input.GetInt32(validator);
-        Console.WriteLine($"Tri tuyet doi: {Math.Abs(x)}.");
+        Console.WriteLine($"|{x}| = {Math.Abs(x)}.");
 
         Console.WriteLine("1.3: 2^x");
         x = Input.GetInt32(validator);
@@ -25,9 +25,9 @@ public class ExerciseInt
 
 
         Console.WriteLine("1.4: x / y");
-        x = Input.GetInt32(validator);
-        y = Input.GetInt32(validator);
-        Console.WriteLine($"{x} chia {y} bang {x / y} du {x % y}");
+        x = Input.GetInt32(validator, "Nhap X: ");
+        y = Input.GetInt32(validator, "Nhap Y: ");
+        Console.WriteLine($"{x}/{y} = {x / y} du {x % y}");
 
         Console.WriteLine("1.5: Test so nguyen to.");
         while (true)
@@ -37,9 +37,15 @@ public class ExerciseInt
             if (truePrime)
             {
                 Console.WriteLine($"{x} la so nguyen to.");
+            }
+            else
+            {
+                Console.WriteLine($"{x} khong phai so nguyen to.");
+            }
+            if (!ExerciseTemplate.testMore())
+            {
                 break;
             }
-            Console.WriteLine($"{x} khong phai so nguyen to.");
         }
 
 
@@ -96,8 +102,6 @@ public class ExerciseInt
             Console.WriteLine("So khong duoc bang 0");
             return false;
         }
-        return true;
-
         return true;
     }
 

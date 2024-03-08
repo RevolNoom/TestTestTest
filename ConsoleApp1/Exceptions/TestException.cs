@@ -13,7 +13,9 @@
         {
             Console.WriteLine("2");
             return;
+#pragma warning disable CS0162 // Unreachable code detected
             Console.WriteLine("3");
+#pragma warning restore CS0162 // Unreachable code detected
         }
         finally
         {
