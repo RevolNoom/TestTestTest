@@ -1,13 +1,13 @@
 ﻿class TestException
 {
     // 1 2 4 5
-    public static void orderOfFinallyExecution()
+    public static void OrderOfFinallyExecution()
     {
         Console.WriteLine("1");
-        _orderOfFinallyExecution();
+        _OrderOfFinallyExecution();
         Console.WriteLine("5");
     }
-    public static void _orderOfFinallyExecution()
+    public static void _OrderOfFinallyExecution()
     {
         try
         {

@@ -3,28 +3,28 @@ using System.Dynamic;
 
 class Input
 {
-    static public string GetString(Predicate<string?> validator, string prompt = "Nhap mot string: ")
+    static public string GetString(Predicate<string?> Validator, string prompt = "Nhap mot string: ")
     {
-        return Get(prompt, validator, (str) => str);
+        return Get(prompt, Validator, (str) => str);
     }
 
-    static public int GetInt32(Predicate<string?> validator, string prompt = "Nhap mot so nguyen 32 bit: ")
+    static public int GetInt32(Predicate<string?> Validator, string prompt = "Nhap mot so nguyen 32 bit: ")
     {
-        return Get(prompt, validator, Int32.Parse);
+        return Get(prompt, Validator, Int32.Parse);
     }
 
-    static public bool GetBool(Predicate<string?> validator, string prompt = "Nhap 'true' hoac 'false': ")
+    static public bool GetBool(Predicate<string?> Validator, string prompt = "Nhap 'true' hoac 'false': ")
     {
-        return Get(prompt, validator, bool.Parse);
+        return Get(prompt, Validator, bool.Parse);
     }
 
-    static public double GetDouble(Predicate<string?> validator, string prompt = "Nhap mot so thap phan: ")
+    static public double GetDouble(Predicate<string?> Validator, string prompt = "Nhap mot so thap phan: ")
     {
-        return Get(prompt, validator, double.Parse);
+        return Get(prompt, Validator, double.Parse);
     }
-    static public DateTime GetDateTime(Predicate<string?> validator, string prompt = "Nhap ngay thang nam DD/MM/YYYY: ")
+    static public DateTime GetDateTime(Predicate<string?> Validator, string prompt = "Nhap ngay thang nam DD/MM/YYYY: ")
     {
-        return Get(prompt, validator, dateTimeParser);
+        return Get(prompt, Validator, DateTimeParser);
     }
 
     static public List<int> GetListInt(int count)
@@ -32,7 +32,7 @@ class Input
         List<int> result = [];
         for (int i = 0; i < count; ++i)
         {
-            result.Add(Get("Nhap mot so nguyen: ", ExerciseInt.validator, Int32.Parse));
+            result.Add(Get("Nhap mot so nguyen: ", ExerciseInt.Validator, Int32.Parse));
         }
         return result;
     }
@@ -43,22 +43,22 @@ class Input
     /// </summary>
     /// <param name="s"></param>
     /// <returns></returns>
-    static public bool yesNoValidator(string? s)
+    static public bool YesNoValidator(string? s)
     {
-        return s != null && 
-                (s == "" || 
-                 s.ToLower() == "n" ||
-                 s.ToLower() == "y");
+        return s != null &&
+                (s == "" ||
+                 s.Equals("n", StringComparison.CurrentCultureIgnoreCase) ||
+                 s.Equals("y", StringComparison.CurrentCultureIgnoreCase));
     }
 
-    static private DateTime dateTimeParser(string s)
+    static private DateTime DateTimeParser(string s)
     {
         return DateTime.ParseExact(s, "d/M/yyyy", System.Globalization.CultureInfo.InvariantCulture);
     }
 
-    // validator dùng để lọc dữ liệu đầu vào bị sai
+    // Validator dùng để lọc dữ liệu đầu vào bị sai
     // transformer dùng để biến đổi string input thành dữ liệu đầu ra
-    static public T Get<T>(string prompt, Predicate<string?> validator, Func<string, T> transformer)
+    static public T Get<T>(string prompt, Predicate<string?> Validator, Func<string, T> transformer)
     {
         while (true)
         {
@@ -66,7 +66,7 @@ class Input
             {
                 Console.Write(prompt);
                 string? input = Console.ReadLine();
-                if (input != null && validator(input))
+                if (input != null && Validator(input))
                 {
                     return transformer(input);
                 }
@@ -78,11 +78,11 @@ class Input
         }
     }
 
-    public static bool predicateTrue(string? s)
+    public static bool PredicateTrue(string? _)
     {
         return true;
     }
-    public static bool predicateFalse(string? s)
+    public static bool PredicateFalse(string? _)
     {
         return false;
     }

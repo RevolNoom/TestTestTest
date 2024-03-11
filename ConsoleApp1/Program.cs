@@ -1,4 +1,6 @@
-﻿using System.Xml;
+﻿using ConsoleApp1.ClassObject;
+using ConsoleApp1.PrimitiveTests;
+using System.Xml;
 
 /// Primitive type tests
 internal class Program
@@ -7,19 +9,19 @@ internal class Program
     {
 
 
-        ExerciseString.automatedTest();
-        ExerciseInt.automatedTest();
-        ExerciseBool.automatedTest();
-        ExerciseDecimal.automatedTest();
-        ExerciseDateTime.automatedTest();
-        ExerciseList.automatedTest();
-        ExerciseDictionary.automatedTest();
+        ExerciseString.AutomatedTest();
+        ExerciseInt.AutomatedTest();
+        ExerciseBool.AutomatedTest();
+        ExerciseDecimal.AutomatedTest();
+        ExerciseDateTime.AutomatedTest();
+        ExerciseList.AutomatedTest();
+        ExerciseDictionary.AutomatedTest();
 
-        Employee.automatedTest();
+        Employee.AutomatedTest();
 
         //TestException.orderOfFinallyExecution();
 
-        TestFile.automatedTest();
+        TestFile.AutomatedTest();
 
 
         /*

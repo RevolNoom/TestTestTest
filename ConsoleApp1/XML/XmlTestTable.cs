@@ -3,9 +3,9 @@ using System.Xml.Schema;
 using System.Xml.Serialization;
 using static System.Net.Mime.MediaTypeNames;
 
-public class XmlTestTable: IXmlSerializable
+public class XmlTestTable : IXmlSerializable
 {
-    public XmlTestTable() {}
+    public XmlTestTable() { }
 
     public XmlSchema? GetSchema()
     {

@@ -2,7 +2,7 @@
 
 public class ExerciseInt
 {
-    public static void automatedTest()
+    public static void AutomatedTest()
     {
         Console.WriteLine("INT AUTOMATED TEST");
         Console.WriteLine();
@@ -11,29 +11,29 @@ public class ExerciseInt
         int y;
 
         Console.WriteLine("1.1: Input: Mot so 32 bit lon hon 0.");
-        x = Input.GetInt32(positiveValidator);
-        Console.WriteLine($"Ket qua: {x}. So {(x % 2 == 0? "chan" : "le")}");
+        x = Input.GetInt32(PositiveValidator);
+        Console.WriteLine($"Ket qua: {x}. So {(x % 2 == 0 ? "chan" : "le")}");
 
 
         Console.WriteLine("1.2: |x|");
-        x = Input.GetInt32(validator);
+        x = Input.GetInt32(Validator);
         Console.WriteLine($"|{x}| = {Math.Abs(x)}.");
 
         Console.WriteLine("1.3: 2^x");
-        x = Input.GetInt32(validator);
+        x = Input.GetInt32(Validator);
         Console.WriteLine($"2^{x}: {Math.Pow(2, x)}.");
 
 
         Console.WriteLine("1.4: x / y");
-        x = Input.GetInt32(validator, "Nhap X: ");
-        y = Input.GetInt32(validator, "Nhap Y: ");
+        x = Input.GetInt32(Validator, "Nhap X: ");
+        y = Input.GetInt32(Validator, "Nhap Y: ");
         Console.WriteLine($"{x}/{y} = {x / y} du {x % y}");
 
         Console.WriteLine("1.5: Test so nguyen to.");
         while (true)
         {
-            x = Input.GetInt32(validator);
-            var truePrime = isPrime(x);
+            x = Input.GetInt32(Validator);
+            var truePrime = IsPrime(x);
             if (truePrime)
             {
                 Console.WriteLine($"{x} la so nguyen to.");
@@ -42,7 +42,7 @@ public class ExerciseInt
             {
                 Console.WriteLine($"{x} khong phai so nguyen to.");
             }
-            if (!ExerciseTemplate.testMore())
+            if (!ExerciseTemplate.TestMore())
             {
                 break;
             }
@@ -50,11 +50,11 @@ public class ExerciseInt
 
 
         Console.WriteLine("1.6: Validate chuoi so:");
-        Input.GetInt32(validator);
+        Input.GetInt32(Validator);
         Console.WriteLine("Chuoi so.");
     }
 
-    public static bool isPrime(int x)
+    public static bool IsPrime(int x)
     {
         if (x == 1) return true;
 
@@ -66,15 +66,15 @@ public class ExerciseInt
         return true;
     }
 
-    public static bool validator(string? s)
+    public static bool Validator(string? s)
     {
         if (s == null)
         {
             Console.WriteLine("Chuoi so bi null");
             return false;
         }
-        int result;
-        if (!Int32.TryParse(s, out result))
+
+        if (!Int32.TryParse(s, out _))
         {
             Console.WriteLine("Chuoi so khong phai 32 bit");
             return false;
@@ -83,15 +83,14 @@ public class ExerciseInt
         return true;
     }
 
-    public static bool nonZeroValidator(string? s)
+    public static bool NonZeroValidator(string? s)
     {
         if (s == null)
         {
             Console.WriteLine("Chuoi so bi null");
             return false;
         }
-        int result;
-        if (!Int32.TryParse(s, out result))
+        if (!Int32.TryParse(s, out int result))
         {
             Console.WriteLine("Chuoi so khong phai 32 bit");
             return false;
@@ -105,15 +104,14 @@ public class ExerciseInt
         return true;
     }
 
-    public static bool positiveValidator(string? s)
+    public static bool PositiveValidator(string? s)
     {
         if (s == null)
         {
             Console.WriteLine("Chuoi so bi null");
             return false;
         }
-        int result;
-        if (!Int32.TryParse(s, out result))
+        if (!Int32.TryParse(s, out int result))
         {
             Console.WriteLine("Chuoi so khong phai 32 bit");
             return false;

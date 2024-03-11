@@ -1,71 +1,61 @@
-﻿public class Employee
+﻿using ConsoleApp1.PrimitiveTests;
+
+namespace ConsoleApp1.ClassObject
 {
-    public static void automatedTest()
+    public class Employee(string name, int age, DateTime creationDate)
     {
-        Console.WriteLine("TEST INHERITANCE");
-        Console.WriteLine();
-
-        while (true)
+        public static void AutomatedTest()
         {
-            Employee polymorphicHuman;
+            Console.WriteLine("TEST INHERITANCE");
+            Console.WriteLine();
 
-            int type = Input.GetInt32(typeValidator, "1 la Nhan vien, 2 la Sinh vien, 3 la Giao vien: ");
-            switch(type)
+            while (true)
             {
-                case 1:
-                    polymorphicHuman = new Employee("", 0, DateTime.Today);
+                int type = Input.GetInt32(TypeValidator, "1 la Nhan vien, 2 la Sinh vien, 3 la Giao vien: ");
+                Employee polymorphicHuman = type switch
+                {
+                    1 => new Employee("", 0, DateTime.Today),
+                    2 => new Student("", "", 0, DateTime.Today),
+                    // 3
+                    _ => new Teacher("", "", 0, DateTime.Today),
+                };
+                polymorphicHuman.PromptData();
+                polymorphicHuman.ShowInfo();
+                polymorphicHuman.ExtInfo();
+
+                if (!ExerciseTemplate.TestMore())
+                {
                     break;
-                case 2:
-                    polymorphicHuman = new Student("", "", 0, DateTime.Today);
-                    break;
-                default: // 3
-                    polymorphicHuman = new Teacher("", "", 0, DateTime.Today);
-                    break;
+                }
             }
 
-            polymorphicHuman.promptData();
-            polymorphicHuman.ShowInfo();
-            polymorphicHuman.ExtInfo();
-
-            if (!ExerciseTemplate.testMore())
-            {
-                break;
-            }
         }
 
-    }
+        static private bool TypeValidator(string? type)
+        {
+            return ExerciseInt.PositiveValidator(type) && int.Parse(type!) < 4;
+        }
 
-    static private bool typeValidator(string? type)
-    {
-        return ExerciseInt.positiveValidator(type) && Int32.Parse(type!) < 4;
-    }
+        virtual public void PromptData()
+        {
+            Name = Input.GetString(ExerciseString.Validator, "Nhap ten nhan vien: ");
+            Age = Input.GetInt32(ExerciseInt.PositiveValidator, "Nhap tuoi nhan vien: ");
+            CreationDate = Input.GetDateTime(ExerciseDateTime.Validator, "Nhap thoi gian tao (DD/MM/YYYY): ");
+        }
 
-    public Employee(string name, int age, DateTime creationDate)
-    {
-        this.name = name;
-        this.age = age;
-        this.creationDate = creationDate;
-    }
+        public string Name { get; set; } = name;
 
-    virtual public void promptData()
-    {
-        name = Input.GetString(ExerciseString.validator, "Nhap ten nhan vien: ");
-        age = Input.GetInt32(ExerciseInt.positiveValidator, "Nhap tuoi nhan vien: ");
-        creationDate = Input.GetDateTime(ExerciseDateTime.validator, "Nhap thoi gian tao (DD/MM/YYYY): ");
-    }
+        public int Age { get; set; } = age;
 
-    public string name { get; set; }
+        public DateTime CreationDate { get; set; } = creationDate;
 
-    public int age { get; set; }
-
-    public DateTime creationDate { get; set; }
-
-    virtual public void ShowInfo()
-    {
-        Console.WriteLine($"Toi ten la {name}, {age} tuoi.");
-    }
-    virtual public void ExtInfo()
-    {
-        Console.WriteLine($"Toi ten la {name}, duoc tao ra luc {creationDate.ToString("HH:mm:ss dd/MM/yyyy")}.");
+        virtual public void ShowInfo()
+        {
+            Console.WriteLine($"Toi ten la {Name}, {Age} tuoi.");
+        }
+        virtual public void ExtInfo()
+        {
+            Console.WriteLine($"Toi ten la {Name}, duoc tao ra luc {CreationDate:HH:mm:ss dd/MM/yyyy}.");
+        }
     }
 }

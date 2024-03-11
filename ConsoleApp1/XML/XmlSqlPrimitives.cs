@@ -7,20 +7,20 @@ abstract public class XmlSqlPrimitive
     protected string name;
     protected bool nullable;
 
-    protected XmlSqlPrimitive(string name, bool nullable) 
-    { 
-        this.name = name;  
-        this.nullable = nullable; 
+    protected XmlSqlPrimitive(string name, bool nullable)
+    {
+        this.name = name;
+        this.nullable = nullable;
     }
 
     abstract public XmlSchemaObject getXmlSchemaObject();
 }
 
-public class XmlSqlNvarchar: XmlSqlPrimitive
+public class XmlSqlNvarchar : XmlSqlPrimitive
 {
     uint maxLength;
 
-    public XmlSqlNvarchar(string name, uint maxLength, bool nullable = false): base(name, nullable)
+    public XmlSqlNvarchar(string name, uint maxLength, bool nullable = false) : base(name, nullable)
     {
         this.maxLength = maxLength;
     }
@@ -42,7 +42,7 @@ public class XmlSqlNvarchar: XmlSqlPrimitive
 
 public class XmlSqlInt : XmlSqlPrimitive
 {
-    public XmlSqlInt(string name, bool nullable = false): base(name, nullable)
+    public XmlSqlInt(string name, bool nullable = false) : base(name, nullable)
     {
     }
 

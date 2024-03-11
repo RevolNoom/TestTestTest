@@ -1,27 +1,28 @@
-﻿public class Teacher: Employee
+﻿using ConsoleApp1.PrimitiveTests;
+
+namespace ConsoleApp1.ClassObject
 {
-    public Teacher(string profession, string name, int age, DateTime creationTime) : base(name, age, creationTime) {
-        this.profession = profession;
-    }
-
-    public string profession;
-
-
-    public override void promptData()
+    public class Teacher(string profession, string name, int age, DateTime creationTime) : Employee(name, age, creationTime)
     {
-        name = Input.GetString(ExerciseString.validator, "Nhap ten giao vien: ");
-        age = Input.GetInt32(ExerciseInt.positiveValidator, "Nhap tuoi giao vien (DD/MM/YYYY): ");
-        creationDate = Input.GetDateTime(ExerciseDateTime.validator, "Nhap thoi gian tao: ");
-        profession = Input.GetString(ExerciseString.validator, "Nhap bo mon: ");
-    }
+        public string Profession { get; set; } = profession;
 
-    public override void ShowInfo() 
-    {
-        Console.WriteLine($"Toi la Giao Vien, {age} tuoi, toi ten la {name}.");
-    }
 
-    public override void ExtInfo()
-    {
-        Console.WriteLine($"Toi la Giao Vien ten {name}, thuoc bo mon {profession}, duoc tao ra luc {creationDate.ToString("HH:mm:ss dd/MM/yyyy")}.");
+        public override void PromptData()
+        {
+            Name = Input.GetString(ExerciseString.Validator, "Nhap ten giao vien: ");
+            Age = Input.GetInt32(ExerciseInt.PositiveValidator, "Nhap tuoi giao vien (DD/MM/YYYY): ");
+            CreationDate = Input.GetDateTime(ExerciseDateTime.Validator, "Nhap thoi gian tao: ");
+            Profession = Input.GetString(ExerciseString.Validator, "Nhap bo mon: ");
+        }
+
+        public override void ShowInfo()
+        {
+            Console.WriteLine($"Toi la Giao Vien, {Age} tuoi, toi ten la {Name}.");
+        }
+
+        public override void ExtInfo()
+        {
+            Console.WriteLine($"Toi la Giao Vien ten {Name}, thuoc bo mon {Profession}, duoc tao ra luc {CreationDate:HH:mm:ss dd/MM/yyyy}.");
+        }
     }
 }

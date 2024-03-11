@@ -1,15 +1,16 @@
-﻿class TestFile { 
-    public static void automatedTest()
+﻿class TestFile
+{
+    public static void AutomatedTest()
     {
         FileStream? input = null;
         FileStream? output = null;
         try
         {
-            input = promptInputFile();
+            input = PromptInputFile();
 
-            var result = processInputFile(input);
+            var result = ProcessInputFile(input);
 
-            output = promptOutputFile();
+            output = PromptOutputFile();
             StreamWriter writer = new StreamWriter(output);
             foreach (var line in result)
             {
@@ -36,7 +37,7 @@
         }
     }
 
-    public static List<string> processInputFile(FileStream input)
+    public static List<string> ProcessInputFile(FileStream input)
     {
         var reader = new StreamReader(input);
         var result = new List<string>();
@@ -67,7 +68,8 @@
                     {
                         failFormatCount += 1;
                     }
-                    catch (OverflowException) {
+                    catch (OverflowException)
+                    {
                         overflowCount += 1;
                     }
                 }
@@ -95,11 +97,11 @@
         return result;
     }
 
-    public static FileStream promptInputFile()
+    public static FileStream PromptInputFile()
     {
         while (true)
         {
-            var inputFilePath = Input.GetString(Input.predicateTrue, "Nhap duong dan file dau vao (input_file.txt): ");
+            var inputFilePath = Input.GetString(Input.PredicateTrue, "Nhap duong dan file dau vao (input_file.txt): ");
 
             try
             {
@@ -122,11 +124,11 @@
 
     }
 
-    public static FileStream promptOutputFile()
+    public static FileStream PromptOutputFile()
     {
         while (true)
         {
-            var outputFilePath = Input.GetString(Input.predicateTrue, "Nhap duong dan file dau ra (output_file.txt): ");
+            var outputFilePath = Input.GetString(Input.PredicateTrue, "Nhap duong dan file dau ra (output_file.txt): ");
 
             try
             {

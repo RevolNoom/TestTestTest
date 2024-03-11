@@ -1,27 +1,31 @@
 ﻿using static System.Net.Mime.MediaTypeNames;
 
-public class ExerciseBool
+namespace ConsoleApp1.PrimitiveTests
 {
-    public static void automatedTest()
+    public class ExerciseBool
     {
-        Console.WriteLine("BOOL AUTOMATED TEST");
-        Input.GetBool(validator);
-        Console.WriteLine("Chuoi hop le");
-        Console.WriteLine();
-    }
-
-    public static bool validator(string? b) {
-        if (b == null)
+        public static void AutomatedTest()
         {
-            Console.WriteLine("Chuoi bi null.");
-            return false;
+            Console.WriteLine("BOOL AUTOMATED TEST");
+            Input.GetBool(Validator);
+            Console.WriteLine("Chuoi hop le");
+            Console.WriteLine();
         }
 
-        var isBool = b.ToLower() == b && bool.TryParse(b, out _);
-        if (!isBool)
+        public static bool Validator(string? b)
         {
-            Console.WriteLine("Khong phai chuoi bool");
+            if (b == null)
+            {
+                Console.WriteLine("Chuoi bi null.");
+                return false;
+            }
+
+            var isBool = b.Equals(b, StringComparison.CurrentCultureIgnoreCase) && bool.TryParse(b, out _);
+            if (!isBool)
+            {
+                Console.WriteLine("Khong phai chuoi bool");
+            }
+            return isBool;
         }
-        return isBool;
     }
 }

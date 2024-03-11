@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 using static System.Net.Mime.MediaTypeNames;
 
 
-public class XmlTestStudent: IXmlSerializable
+public class XmlTestStudent : IXmlSerializable
 {
     public int studentId;
     public int? classId;
@@ -44,7 +44,7 @@ public class XmlTestStudent: IXmlSerializable
     {
         var complexType = new XmlSchemaComplexType();
         complexType.Name = "Student";
-        
+
         // Sequence of a billion relation attributes here
         var sequence = new XmlSchemaSequence();
 

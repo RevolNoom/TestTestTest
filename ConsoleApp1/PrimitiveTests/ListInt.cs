@@ -2,7 +2,7 @@
 
 public class ExerciseList
 {
-    public static void automatedTest()
+    public static void AutomatedTest()
     {
         Console.WriteLine("List<int> TEST");
         Console.WriteLine();
@@ -12,7 +12,7 @@ public class ExerciseList
         int x;
         List<int> list = [];
 
-        Console.WriteLine($"1.1: Mot danh sach ngau nhien:\n {ToString(getRandomListInt())}\n");
+        Console.WriteLine($"1.1: Mot danh sach ngau nhien:\n {ToString(GetRandomListInt())}\n");
 
         Console.WriteLine($"1.2: Nhap {count} so bat ky. In ra sap xep tang dan.");
         list = Input.GetListInt(count);
@@ -25,25 +25,25 @@ public class ExerciseList
         Console.WriteLine($"Ket qua: {ToString(list)}");
 
         Console.WriteLine($"1.4: Nhap {count} so bat ky. Nhap them mot so X. Bo di cac so nho hon X.");
-        x = Input.GetInt32(ExerciseInt.validator, "Nhap so nguyen X: ");
+        x = Input.GetInt32(ExerciseInt.Validator, "Nhap so nguyen X: ");
         Console.WriteLine($"Nhap day {count} so: ");
         list = Input.GetListInt(count);
         Console.WriteLine($"Ket qua: {ToString(RemoveWhereLessThan(list, x))}");
 
         Console.WriteLine($"1.5: Nhap {count} so bat ky. Nhap them mot so X. Bo di cac so chia het cho X.");
-        x = Input.GetInt32(ExerciseInt.nonZeroValidator, "Nhap so nguyen X: ");
+        x = Input.GetInt32(ExerciseInt.NonZeroValidator, "Nhap so nguyen X: ");
         Console.WriteLine($"Nhap day {count} so: ");
         list = Input.GetListInt(count);
         Console.WriteLine($"Ket qua: {ToString(RemoveWhereDivide(list, x))}");
 
         Console.WriteLine($"1.6: Nhap {count} so bat ky. Nhap them mot so X. Cong them X neu so do be hon X.");
-        x = Input.GetInt32(ExerciseInt.validator, "Nhap so nguyen X: ");
+        x = Input.GetInt32(ExerciseInt.Validator, "Nhap so nguyen X: ");
         Console.WriteLine($"Nhap day {count} so: ");
         list = Input.GetListInt(count);
         Console.WriteLine($"Ket qua: {ToString(AddIfLessThan(list, x))}");
 
         Console.WriteLine($"1.7: Nhap {count} so bat ky. Nhap them mot so X > 0. In X so cuoi ra man hinh.");
-        x = Input.GetInt32(ExerciseInt.positiveValidator, "Nhap so nguyen X: ");
+        x = Input.GetInt32(ExerciseInt.PositiveValidator, "Nhap so nguyen X: ");
         x = Math.Min(x, count);
         Console.WriteLine($"Nhap day {count} so: ");
         list = Input.GetListInt(count);
@@ -51,7 +51,7 @@ public class ExerciseList
         Console.WriteLine($"Ket qua: {ToString(list)}");
 
         Console.WriteLine($"1.8: Nhap {count} so bat ky. Nhap them mot so X > 0. In X so cuoi ra man hinh theo chieu nguoc lai.");
-        x = Input.GetInt32(ExerciseInt.positiveValidator, "Nhap so nguyen X: ");
+        x = Input.GetInt32(ExerciseInt.PositiveValidator, "Nhap so nguyen X: ");
         x = Math.Min(x, count);
         Console.WriteLine($"Nhap day {count} so: ");
         list = Input.GetListInt(count);
@@ -60,8 +60,8 @@ public class ExerciseList
         Console.WriteLine($"Ket qua: {ToString(list)}");
 
         Console.WriteLine($"1.9: Nhap so X > 0. In ra nhieu nhat {count} so Fibonacci cuoi cung < X.");
-        x = Input.GetInt32(ExerciseInt.positiveValidator, "Nhap so nguyen X: ");
-        list = getFibonacci(x);
+        x = Input.GetInt32(ExerciseInt.PositiveValidator, "Nhap so nguyen X: ");
+        list = GetFibonacci(x);
         list = list.TakeLast(Math.Min(count, list.Count)).ToList();
         Console.WriteLine($"Ket qua: {ToString(list)}");
     }
@@ -71,7 +71,7 @@ public class ExerciseList
     /// </summary>
     /// <param name="threshold"></param>
     /// <returns></returns>
-    public static List<int> getFibonacci(int threshold)
+    public static List<int> GetFibonacci(int threshold)
     {
         if (threshold < 1)
         {
@@ -80,7 +80,7 @@ public class ExerciseList
         List<int> result = [1, 1];
         while (true)
         {
-            var nextElement = result[result.Count - 2] + result.Last();
+            var nextElement = result[^2] + result.Last();
             if (nextElement > threshold)
             {
                 break;
@@ -132,7 +132,7 @@ public class ExerciseList
         return list;
     }
 
-    public static List<int> getRandomListInt()
+    public static List<int> GetRandomListInt()
     {
         var rand = new Random();
         var list = new List<int>();

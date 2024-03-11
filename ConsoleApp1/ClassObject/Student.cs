@@ -1,26 +1,26 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using ConsoleApp1.PrimitiveTests;
+using System.Security.Cryptography.X509Certificates;
 
-public class Student: Employee
+namespace ConsoleApp1.ClassObject
 {
-    public Student(string major, string name, int age, DateTime creationTime) : base(name, age, creationTime) { 
-        this.major = major;
-    }
+    public class Student(string major, string name, int age, DateTime creationTime) : Employee(name, age, creationTime)
+    {
+        public string major = major;
 
-    public string major;
-
-    public override void promptData()
-    {
-        name = Input.GetString(ExerciseString.validator, "Nhap ten sinh vien: ");
-        age = Input.GetInt32(ExerciseInt.positiveValidator, "Nhap tuoi sinh vien: ");
-        creationDate = Input.GetDateTime(ExerciseDateTime.validator, "Nhap thoi gian tao (DD/MM/YYYY): ");
-        major = Input.GetString(ExerciseString.validator, "Nhap chuyen nganh: ");
-    }
-    public override void ShowInfo()
-    {
-        Console.WriteLine($"Toi ten la {name}, {age} tuoi. Toi la Sinh Vien");
-    }
-    public override void ExtInfo()
-    {
-        Console.WriteLine($"Toi la Sinh Vien ten {name}, hoc chuyen nganh {major}, duoc tao ra luc {creationDate.ToString("HH:mm:ss dd/MM/yyyy")}.");
+        public override void PromptData()
+        {
+            Name = Input.GetString(ExerciseString.Validator, "Nhap ten sinh vien: ");
+            Age = Input.GetInt32(ExerciseInt.PositiveValidator, "Nhap tuoi sinh vien: ");
+            CreationDate = Input.GetDateTime(ExerciseDateTime.Validator, "Nhap thoi gian tao (DD/MM/YYYY): ");
+            major = Input.GetString(ExerciseString.Validator, "Nhap chuyen nganh: ");
+        }
+        public override void ShowInfo()
+        {
+            Console.WriteLine($"Toi ten la {Name}, {Age} tuoi. Toi la Sinh Vien");
+        }
+        public override void ExtInfo()
+        {
+            Console.WriteLine($"Toi la Sinh Vien ten {Name}, hoc chuyen nganh {major}, duoc tao ra luc {CreationDate:HH:mm:ss dd/MM/yyyy}.");
+        }
     }
 }
